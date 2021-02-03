@@ -1,0 +1,18 @@
+<h2 class="pb-4 pt-4">タスク<%= @task.id %>の詳細ページ</h2>
+
+<div class="row">
+    <div class="col-6">
+
+        <div class="card">
+            <div class="card-header">
+                <%= @task.status %>
+            </div>
+            <div class="card-body">
+                <td class=""><%= @task.content %></td>
+            </div>
+        </div>
+    </div>
+</DIV>
+<br>
+<%= link_to "タスク編集", edit_task_path(@task), class: "btn btn-primary" %>
+<%= link_to "タスク削除", @task, method: :delete, data: { confirm: "本当に削除してよろしいですか" }, class: "btn btn-danger" %>
