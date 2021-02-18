@@ -1,24 +1,27 @@
+<% if logged_in? %>
+<p>ログイン完了ユーザ: <%= current_user.name %></p>
+
 <h2 class="pb-4 pt-4">タスク一覧表</h2>
-        <table class="table w-100 my-box">
-            <thead class="thead-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>タスク内容</th>
-                    <th>ステータス</th>
-                    <th></th>
-                </tr>
-            </thead>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-header">
+                新規タスク
+            </div>
+            <aside>
+                <div class="card-body">
+                    <%= render 'tasks/form' %>
+                </div>
+            </aside>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <%= render 'tasks/tasks', tasks: @tasks %>
+    </div>
+</div>
 
-            <% @tasks.each do |task| %>
-            <tr>
-                <td><%= link_to task.id, task %></td>
-                <td><%= task.content %></td>
-                <td><%= task.status %></td>
-                <td><%= link_to "編集", edit_task_path(task.id) %>
-            </tr>
-            <% end %>
-        </table>
-<%= paginate @tasks %>
 
-<br>
-<%= link_to '新しいタスク', new_task_path %>
+<% else %>
+<%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+
+<% end %>
