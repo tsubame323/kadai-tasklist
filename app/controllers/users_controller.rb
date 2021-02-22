@@ -1,12 +1,8 @@
 class UsersController < ApplicationController
   def index
-    @users = User.order(id: :desc).page(params[:page]).per(25)
   end
 
   def show
-    @user = User.find(params[:id])
-    @tasks = @user.task.order(id: desc).page(params[:page])
-  counts(@user)
   end
 
   def new
@@ -18,7 +14,7 @@ class UsersController < ApplicationController
     
       if @user.save
         flash[:seccess] = "ユーザー登録完了"
-        redirect_to @user
+        redirect_to root_url
       else
         flash.now[:danger] = "ユーザー登録失敗"
         render :new

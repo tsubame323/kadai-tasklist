@@ -37,7 +37,7 @@ class TasksController < ApplicationController
           redirect_to root_url
       else
           flash.now[:danger] = "Task 更新失敗"
-          render 'tasks/index'
+          render :edit
       end
   end
 
