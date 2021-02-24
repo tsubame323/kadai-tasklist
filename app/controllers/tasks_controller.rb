@@ -24,7 +24,7 @@ end
       else
         @tasks = current_user.tasks.order(id: :desc).page(params[:page])
           flash.now[:danger] = "Task 投稿失敗"
-          render 'tasks/index'
+          render :new
       end
   end
 
@@ -60,7 +60,7 @@ end
   end
   
   def correct_user
-    @task = current_user.tasks.find_by(id: params[:id])
+    @task = Task.find(params[:id])
     unless @task
       redirect_to root_url
     end
