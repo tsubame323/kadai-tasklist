@@ -1,4 +1,4 @@
-<% if logged_in? %>
+
 <p>ログイン完了ユーザ: <%= current_user.name %></p>
 
 <h2 class="pb-4 pt-4">タスク一覧表</h2>
@@ -21,7 +21,3 @@
 </div>
 
 
-<% else %>
-<%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
-
-<% end %>
