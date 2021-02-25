@@ -5,14 +5,12 @@ class TasksController < ApplicationController
   def index
     @tasks = current_user.tasks.order(id: :desc).page(params[:page]).per(10)
     @task = current_user.tasks.build
+
   end
-  
-def new
-  @task = Task.new
-end
+  def new
+  end
 
 def show
-  @task = Task.find(params[:id])
 end
 
   def create
@@ -29,11 +27,9 @@ end
   end
 
   def edit
-      @task = Task.find(params[:id])
   end
 
   def update
-      @task = Task.find(params[:id])
       
       if @task.update(task_params)
           flash[:success] = "Task 更新完了"
@@ -60,7 +56,7 @@ end
   end
   
   def correct_user
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find_by(id: params[:id])
     unless @task
       redirect_to root_url
     end
