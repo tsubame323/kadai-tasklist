@@ -3,17 +3,14 @@
 <h2 class="pb-4 pt-4">タスク一覧表</h2>
 <div class="row">
     <div class="col-sm-4">
-        <div class="card">
-            <div class="card-header">
-                新規タスク
-            </div>
-            <aside>
-                <div class="card-body">
-                    <%= render 'tasks/form' %>
-                </div>
-            </aside>
-        </div>
+        <aside>
+
+
+            <%= render 'tasks/form' %>
+
+        </aside>
     </div>
+
     <div class="col-sm-8">
         <%= render 'tasks/tasks', tasks: @tasks %>
     </div>
